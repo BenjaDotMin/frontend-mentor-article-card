@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+$darkGrayishBlue: hsl(217, 19%, 35%);
+$lightGrayishBlue: hsl(210, 46%, 95%);
+$grayishBlue: hsl(212, 23%, 69%);
+$darkBlue: hsl(214, 17%, 51%);
+
+*{box-sizing: border-box;}
+
+html{font-size: 62.5%;}
+img{max-width: 100%; display: block;}
+
+body{font-family: 'Manrope', sans-serif; margin: 0; background-color: $lightGrayishBlue;
+    main{min-height: 100vh; display: grid; place-items: center;
+        .card{height: 280px; width:90vw; max-width: 730px; background-color: white; display: flex; border-radius: 10px; box-shadow: 0px 40px 40px 0px rgba(0, 0, 0, 0.05);
+            .card__left{flex: 0 0 285px; position: relative; overflow: hidden;
+                img{height: 100%; width: 100%; object-fit: cover; object-position: left; border-radius: 10px 0 0 10px;}
+                //&:after{content: ""; position: absolute; inset: 0; background-color: rgba(255, 255, 255, 0.05);}
+            }
+            .card__right{padding: 33px 40px 32px; display: flex; flex-direction: column;
+                h1{letter-spacing: 0.03rem; margin: 0 0 0; line-height: 2.8rem; color: $darkGrayishBlue;}
+                p{font-size: 1.2rem; margin: 12px 0 0; letter-spacing: 0.06rem; line-height: 2rem; flex: 1;  color: $darkGrayishBlue;}
+                .card__user{display: flex; justify-content: space-between; align-items: center; 
+                    img{width: 40px; border-radius: 100%;}
+                    .card__user-details{display: flex; gap: 16px;                  
+                        label{font-size: 1.4em; font-weight: 700; letter-spacing: -0.04rem; color: $darkGrayishBlue;
+                            span{display: block; margin-top: 4px; line-height: 1.3rem; letter-spacing: -0.07rem; color: $grayishBlue;}     
+                        }                                    
+                    }
+                    #share{position: relative; background-color: $lightGrayishBlue; padding: 8px 8px 9px; display: grid; place-items: center; border-radius: 100%; cursor: pointer; transition: 0.2s; will-change: background-color;
+                        svg{width: auto; border-radius: 0;
+                            path{transition: 0.2s; will-change: fill;}
+                        }
+                        #share__menu{transform: translateY(4px); opacity: 0; pointer-events: none; transition: transform 0.2s, opacity 0.2s; will-change: transform, opacity; position: absolute; position: absolute; top: -84px; left: -109px; display: flex; gap:16px; justify-content: center; align-items: center; height: 55px; background: $darkGrayishBlue; width: 248px; border-radius: 10px; box-shadow:0px 9px 16px 0px rgba(0, 0, 0, 0.1); cursor:initial;
+                            label{letter-spacing: 0.55rem; font-size: 1.2rem; color: $grayishBlue; cursor: pointer;}
+                            img{width: 20px; border-radius: 0; cursor: pointer;}
+                            &:after{content: ""; position: absolute; left: 49%; transform: translateX(10px); bottom: -14px; width: 16px; height: 16px; transform: rotate(45deg) translateX(-50%); background-color: inherit;}
+                        }
+                        &.active{background-color: $darkBlue;
+                            #share__menu{transform: translateY(0); opacity: 1; pointer-events: all;}
+                            svg{
+                                path{fill:white;}
+                            }
+                        }
+                    }                    
+                }
+            }
+
+            @media(max-width: 900px){flex-direction: column; height: auto; overflow: hidden; margin: 10px 0;
+                .card__left{
+                    img{border-radius: 10px 10px 0 0; object-position: top;}
+                }
+                .card__right{padding: 33px 30px 22px; position: relative;
+                    h1{font-size:1.6rem; line-height: 2.3rem;}
+                    p{margin-bottom: 33px;}
+
+                    .card__user{
+                        #share{position: initial; margin-bottom: -13px;
+                            svg{position: relative; z-index: 2;}
+                            #share__menu{left: 0; right: 0; bottom: 0; top: auto; height: 70px; border-radius: 0; width: auto; justify-content: flex-start; padding: 0 30px;
+                                &:after{content:none;}
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media(max-width: 400px){
+                .card__left{flex: 0 0 175px;}
+            }
+        }
+    }    
+}
